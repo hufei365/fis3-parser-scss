@@ -10,16 +10,17 @@
  * $description 清除浮动(不需要添加额外标签)
  */
 @mixin fis-clearfix() {
-	*zoom: 1;
+    *zoom: 1;
+
     &:after {
-		content    : "\0020";
-		display    : block;
-		height     : 0;
-		clear      : both;
-		overflow   : hidden;
-		visibility : hidden;
-	}
-}  
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+    }
+}
 
 /**
  * .fis-float
@@ -27,8 +28,8 @@
  * $param [$side=left] 浮动方向
  */
 @mixin fis-float($side:left) {
-	display: inline;
-	float: $side;  
+    display: inline;
+    float: $side;
 }
 
 
@@ -37,7 +38,7 @@
  * $description 左浮动
  */
 @mixin fis-float-left() {
-	@include fis-float(left);
+    @include fis-float(left);
 }
 
 /**
@@ -45,7 +46,7 @@
  * $description 右浮动
  */
 @mixin fis-float-right() {
-	@include fis-float(right);
+    @include fis-float(right);
 }
 
 /**
@@ -53,13 +54,13 @@
  * $description inline-block展示(兼容inline和block元素)
  */
 @mixin fis-inline-block() {
-	display: -moz-inline-box;
-	-moz-box-orient: vertical;
-	display: inline-block;
-	vertical-align: middle;
-	*vertical-align: auto;
-	*zoom:1;
-	*display: inline;
+    display: -moz-inline-box;
+    -moz-box-orient: vertical;
+    display: inline-block;
+    vertical-align: middle;
+    *vertical-align: auto;
+    *zoom: 1;
+    *display: inline;
 }
 
 /**
@@ -68,9 +69,9 @@
  * $param [$radius=5px] 圆角半径
  */
 @mixin fis-border-radius($radius: 5px) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-          border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
 }
 
 /**
@@ -79,9 +80,9 @@
  * $param $shadow 阴影参数(水平偏移值 | 垂直偏移值 | 阴影模糊值 | 阴影颜色)
  */
 @mixin fis-box-shadow($shadow) {
-  -webkit-box-shadow: $shadow;
-     -moz-box-shadow: $shadow;
-          box-shadow: $shadow;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
 }
 
 /**
@@ -98,18 +99,18 @@
     background-image: -ms-linear-gradient(top, $startColor, $endColor);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $startColor), color-stop(100%, $endColor));
     background-image: -webkit-linear-gradient(top, $startColor, $endColor);
-    background-image: -o-linear-gradient(top, $startColor, $endColor); 
-    background-image: linear-gradient(top, $startColor, $endColor); 
+    background-image: -o-linear-gradient(top, $startColor, $endColor);
+    background-image: linear-gradient(top, $startColor, $endColor);
 }
 
 /**
  * .fis-transition
  */
-@mixin fis-transition($transition: 0.4s){
-  -webkit-transition: $transition;
-  -moz-transition: $transition;
-  -o-transition: $transition;
-  transition: $transition;
+@mixin fis-transition($transition: 0.4s) {
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
 }
 
 /**
@@ -118,18 +119,18 @@
  * $param [$opacity=100] 透明度值
  */
 @mixin fis-opacity($opacity: 100) {
-  filter: alpha(opacity=$opacity);
+    filter: alpha(opacity=$opacity);
     -khtml-opacity: $opacity / 100;
-      -moz-opacity: $opacity / 100;
-           opacity: $opacity / 100;
+    -moz-opacity: $opacity / 100;
+    opacity: $opacity / 100;
 }
 
 /**
  * .fis-nowrap
  * $description 文本不折行
  */
-@mixin fis-nowrap() { 
-	white-space: nowrap; 
+@mixin fis-nowrap() {
+    white-space: nowrap;
 }
 
 /**
@@ -138,9 +139,9 @@
  * $param [$value] 最小高度值
  */
 @mixin fis-min-height($value) {
-    min-height:$value;
-    height:auto !important;
-    height:$value;
+    min-height: $value;
+    height: auto !important;
+    height: $value;
 }
 
 /**
@@ -149,9 +150,9 @@
  * $param [$value] 最小宽度值
  */
 @mixin fis-min-width($value) {
-    min-width:$value;
-    width:auto !important;
-    width:$value;
+    min-width: $value;
+    width: auto !important;
+    width: $value;
 }
 
 /**
@@ -180,7 +181,7 @@
  * .icon-arrow
  * $description 箭头
  */
-@mixin fis-arrow($color: #999, $borderWidth: 0px 4px 4px 4px, $borderColor: transparent transparent #999 transparent){
+@mixin fis-arrow($color: #999, $borderWidth: 0px 4px 4px 4px, $borderColor: transparent transparent #999 transparent) {
     width: 0;
     height: 0;
     line-height: 0px;
@@ -200,14 +201,14 @@
     // ie6 hack;
     _border-top-color: $color;
     _border-bottom-color: $color;
-    _filter: chroma( color = $color);
+    _filter: chroma(color=$color);
 }
 
 /**
  * .fis-rotate
  * $description 旋转
  */
-@mixin fis-rotate($deg: 180deg, $ieDeg: 2){
+@mixin fis-rotate($deg: 180deg, $ieDeg: 2) {
     -moz-transform: rotate($deg);
     -webkit-transform: rotate($deg);
     -o-transform: rotate($deg);
@@ -220,7 +221,7 @@
  * $description 反转
  */
 @mixin fis-rotate-y($second: 7s) {
-	animation: page_rotateY $second ease;
+    animation: page_rotateY $second ease;
     -webkit-animation: page_rotateY second ease;
 }
 
@@ -229,13 +230,151 @@
  * $description 旋转
  */
 @mixin fis-rotate-x($second: 4s) {
-	animation: page_rotate $second ease;
+    animation: page_rotate $second ease;
     -webkit-animation: page_rotate $second ease;
 }
 
 
 
+/**
+ * Pseudo
+ * 伪类
+ */
+@mixin fis-pseudo($display: block, $pos: absolute, $content: '') {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+/**
+ * triangle
+ * 三角形
+ */
+@mixin fis-triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+    @include fis-pseudo($pos: $position);
+    width: 0;
+    height: 0;
+
+    @if $round {
+        border-radius: 3px;
+    }
+
+    @if $direction==down {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-top: $size solid $color;
+        margin-top: 0 - round($size / 2.5);
+    }
+
+    @else if $direction==up {
+        border-left: $size solid transparent;
+        border-right: $size solid transparent;
+        border-bottom: $size solid $color;
+        margin-bottom: 0 - round($size / 2.5);
+    }
+
+    @else if $direction==right {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-left: $size solid $color;
+        margin-right: -$size;
+    }
+
+    @else if $direction==left {
+        border-top: $size solid transparent;
+        border-bottom: $size solid transparent;
+        border-right: $size solid $color;
+        margin-left: -$size;
+    }
+}
 
 
+/**
+ * ellipsis
+ * 截断
+ */
+@mixin fis-ellipsis($max-width) {
+    max-width: $max-width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
+/*
+	强行删除 first/last child 的margin
+	example: default
+	.element {
+		@include fis-content-margins;
+	}
+	output:
+	.element > *:first-child {
+		margin-top: 0;
+	}
+	.element > *:last-child {
+		margin-bottom: 0;
+	}
+	example: empty selector
+	.element {
+		@include content-margins('false');
+	}
+	output:
+	.element:first-child {
+		margin-top: 0;
+	}
+	.element:last-child {
+		margin-bottom: 0;
+	}
+*/
+@mixin fis-content-margins($selector: '> *', $last-child: false) {
+    @if not $selector {
+        $selector: '&';
+    }
+
+    #{unquote($selector)} {
+        &:first-child {
+            margin-top: 0;
+        }
+
+        @if $last-child {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+
+/**
+ * center 
+ * 垂直/水平方向的居中
+ */
+
+@mixin fis-align($vertical: true, $horizontal: false, $position: relative) {
+    @if $position {
+        position: $position;
+    }
+
+    @if $vertical {
+        top: 50%;
+    }
+
+    @if $horizontal {
+        left: 50%;
+    }
+
+    @if $vertical and $horizontal {
+        transform: translateX(-50%) translateY(-50%);
+        -ms-transform: translateX(-50%) translateY(-50%);
+    }
+
+    @else if $vertical {
+        transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+    }
+
+    @else {
+        transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+    }
+}
