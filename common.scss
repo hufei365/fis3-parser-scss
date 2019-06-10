@@ -1,0 +1,241 @@
+/**
+ * $fileOverview common[css常用实现封装,, 以fis-开头命名]
+ * $author y.g.q
+ * $date   2014.9.22
+ * $mail   yinguoqing$kingsoft.com
+ */
+
+/**
+ * .fis-clearfix
+ * $description 清除浮动(不需要添加额外标签)
+ */
+@mixin fis-clearfix() {
+	*zoom: 1;
+    &:after {
+		content    : "\0020";
+		display    : block;
+		height     : 0;
+		clear      : both;
+		overflow   : hidden;
+		visibility : hidden;
+	}
+}  
+
+/**
+ * .fis-float
+ * $description 浮动(解决IE6 double margin问题) 
+ * $param [$side=left] 浮动方向
+ */
+@mixin fis-float($side:left) {
+	display: inline;
+	float: $side;  
+}
+
+
+/**
+ * .fis-float-left
+ * $description 左浮动
+ */
+@mixin fis-float-left() {
+	@include fis-float(left);
+}
+
+/**
+ * .fis-float-right
+ * $description 右浮动
+ */
+@mixin fis-float-right() {
+	@include fis-float(right);
+}
+
+/**
+ * .fis-inline-block
+ * $description inline-block展示(兼容inline和block元素)
+ */
+@mixin fis-inline-block() {
+	display: -moz-inline-box;
+	-moz-box-orient: vertical;
+	display: inline-block;
+	vertical-align: middle;
+	*vertical-align: auto;
+	*zoom:1;
+	*display: inline;
+}
+
+/**
+ * .fis-border-radius
+ * $description 圆角(support IE9+、Firefox 3.5+、Safari、Chrome、Opera)
+ * $param [$radius=5px] 圆角半径
+ */
+@mixin fis-border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+/**
+ * .fis-box-shadow
+ * $description 阴影(support Firefox 3.5+、Safari、Chrome、Opera)
+ * $param $shadow 阴影参数(水平偏移值 | 垂直偏移值 | 阴影模糊值 | 阴影颜色)
+ */
+@mixin fis-box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+/**
+ * .fis-gradient-vertical
+ * $description 背景垂直渐变(support IE8+、Firefox 3.5+、Safari、Chrome、Opera)
+ * $param [$startColor=#555] 颜色渐变初始值
+ * $param [$endColor=#333] 颜色渐变终值
+ */
+
+@mixin fis-gradient-vertical ($startColor: #555, $endColor: #333) {
+    background-color: $startColor;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(top, $startColor, $endColor);
+    background-image: -ms-linear-gradient(top, $startColor, $endColor);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $startColor), color-stop(100%, $endColor));
+    background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+    background-image: -o-linear-gradient(top, $startColor, $endColor); 
+    background-image: linear-gradient(top, $startColor, $endColor); 
+}
+
+/**
+ * .fis-transition
+ */
+@mixin fis-transition($transition: 0.4s){
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+/**
+ * .fis-opacity
+ * $description 透明度(support IE6+、Firefox 3.5+、Safari、Chrome、Opera)
+ * $param [$opacity=100] 透明度值
+ */
+@mixin fis-opacity($opacity: 100) {
+  filter: alpha(opacity=$opacity);
+    -khtml-opacity: $opacity / 100;
+      -moz-opacity: $opacity / 100;
+           opacity: $opacity / 100;
+}
+
+/**
+ * .fis-nowrap
+ * $description 文本不折行
+ */
+@mixin fis-nowrap() { 
+	white-space: nowrap; 
+}
+
+/**
+ * .fis-min-height
+ * $description 最小高度
+ * $param [$value] 最小高度值
+ */
+@mixin fis-min-height($value) {
+    min-height:$value;
+    height:auto !important;
+    height:$value;
+}
+
+/**
+ * .fis-min-width
+ * $description 最小宽度
+ * $param [$value] 最小宽度值
+ */
+@mixin fis-min-width($value) {
+    min-width:$value;
+    width:auto !important;
+    width:$value;
+}
+
+/**
+ * .fis-icon
+ * $description 方形icon 
+ */
+@mixin fis-icon($size: 16px) {
+    width: $size;
+    height: $size;
+    @include fis-inline-block;
+    background-repeat: no-repeat;
+}
+
+/**
+ * .fis-icon-rect
+ * $description 长方形icon 
+ */
+@mixin fis-icon-rect($width: 16px, $height: 16px) {
+    width: $width;
+    height: $height;
+    @include fis-inline-block;
+    background-repeat: no-repeat;
+}
+
+/**
+ * .icon-arrow
+ * $description 箭头
+ */
+@mixin fis-arrow($color: #999, $borderWidth: 0px 4px 4px 4px, $borderColor: transparent transparent #999 transparent){
+    width: 0;
+    height: 0;
+    line-height: 0px;
+    border-style: solid;
+    font-size: 0;
+    text-indent: -99999px;
+    line-height: 0;
+    vertical-align: middle;
+    border-width: $borderWidth;
+    border-color: $borderColor;
+    @include fis-inline-block;
+    transition: transform .2s ease-out;
+    -webkit-transition: -webkit-transform .2s ease-out;
+    -moz-transition: -moz-transform .2s ease-out;
+    -o-transition: -o-transform .2s ease-out;
+
+    // ie6 hack;
+    _border-top-color: $color;
+    _border-bottom-color: $color;
+    _filter: chroma( color = $color);
+}
+
+/**
+ * .fis-rotate
+ * $description 旋转
+ */
+@mixin fis-rotate($deg: 180deg, $ieDeg: 2){
+    -moz-transform: rotate($deg);
+    -webkit-transform: rotate($deg);
+    -o-transform: rotate($deg);
+    transform: rotate($deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=$ieDeg);
+}
+
+/**
+ * .fis-rotate-y
+ * $description 反转
+ */
+@mixin fis-rotate-y($second: 7s) {
+	animation: page_rotateY $second ease;
+    -webkit-animation: page_rotateY second ease;
+}
+
+/**
+ * .fis-rotate-x
+ * $description 旋转
+ */
+@mixin fis-rotate-x($second: 4s) {
+	animation: page_rotate $second ease;
+    -webkit-animation: page_rotate $second ease;
+}
+
+
+
+
+
+
+
